@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #FEFAE0;
+}
+
+header {
+    width: 100%;
+    background-color: #D4A373;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .menu-toggle {
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+h1{
+    font-size: 20px;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+}
+
+aside {
+    width: 200px;
+    background-color: #D4A373;
+    padding: 1rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside ul li {
+    margin: 1rem 0;
+}
+
+aside ul li a {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+aside ul li a img {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem;
+}
+
+aside ul li a:hover,
+aside ul li a.active {
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.product {
+    border: 1px solid #FFFFFF;
+    padding: 1rem;
+    width: calc(25% - 1rem);
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #FFFFFF;
+    border-radius: 5%;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    aside {
+        width: 100%;
+        height: auto;
+    }
+    
+    .container {
+        flex-direction: column;
+    }
+    
+    .product {
+        width: calc(50% - 1rem);
+    }
+
+    header .menu-toggle {
+        display: block;
+    }
+
+    aside {
+        display: none;
+    }
+
+    aside.active {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .product {
+        width: 100%;
+    }
+}
