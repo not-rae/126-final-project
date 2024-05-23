@@ -72,11 +72,13 @@ header {
 }
 
 
-.category-dropdown {
+.category-dropdown,
+.date-dropdown {
     margin-left: auto; 
 }
 
-.category-dropdown select {
+.category-dropdown select
+.date-dropdown select {
     padding: 3px 10px;
     border-radius: 9px;
     border: none;

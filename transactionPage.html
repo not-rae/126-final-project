@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Inventory</title>
+    <title>Admin Transaction</title>
     <link rel="stylesheet" href="adminStyle.css">
 </head>
 <body>
@@ -18,20 +18,14 @@
     </header>
     
     <div class="spacer"></div>
-    
+
     <nav class="dashboard">
         <div class="tab">Inventory</div>
         <div class="tab">Transactions</div>
         <div class="tab">Add Product</div>
-        <div class="category-dropdown">
-            <select name="categories" id="categories">
-                <option value="all">Product Categories</option>
-                <option value="coffee">Coffee</option>
-                <option value="beverages">Beverages</option>
-                <option value="snacks">Snacks</option>
-                <option value="noodles">Noodles</option>
-                <option value="school-supplies">School Supplies</option>
-                <option value="toiletries">Toiletries and Laundry</option>
+        <div class="date-dropdown">
+            <select name="date" id="date">
+                <option value="all">Choose Date</option>
             </select>
         </div>
     </nav>
@@ -40,23 +34,29 @@
         <table>
             <thead>
                 <tr>
-                    <th>Product Code</th>
-                    <th>Product Name</th>
-                    <th>Category</th>
-                    <th>Unit Price</th>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Date and Time</th>
+                    <th>Product ID</th>
                     <th>Quantity</th>
-                    <th>Restock Date</th>
+                    <th>Total</th>
+                    <th>Payment Method</th>
+                    <th>Payment/Reference No.</th>
+                    <th>Change</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
+                    <td>#000143</td>
+                    <td>Daniella Pailden</td>
+                    <td>05/23/24 1:52PM</td>
                     <td>#000001</td>
-                    <td>Kopiko</td>
-                    <td>Coffee</td>
+                    <td>1</td>
+                    <td>00.00</td>
+                    <td>Cash</td>
                     <td>00.00</td>
                     <td>00.00</td>
-                    <td>05/23/2024</td>
                     <td></td>
                 </tr>
             </tbody>
