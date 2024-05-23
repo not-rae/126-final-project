@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const categoryLinks = document.querySelectorAll('aside ul li a');
     const products = document.querySelectorAll('.product');
-    const menuToggle = document.querySelector('.menu-toggle');
     const aside = document.querySelector('aside');
     const buttons = document.querySelectorAll('.payment-option button');
 
@@ -14,10 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
         dateTimeElement.textContent = formattedDate;
     }
 
-    // Call the updateTime function initially
+    // call the updateTime function
     updateTime();
 
-    // cpdate the time every second
+    // update the time every second
     setInterval(updateTime, 1000);
 
     // category buttons
