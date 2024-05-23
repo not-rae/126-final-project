@@ -17,10 +17,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Call the updateTime function initially
     updateTime();
 
-    // Update the time every second
+    // cpdate the time every second
     setInterval(updateTime, 1000);
 
-    // Category buttons
+    // category buttons
     categoryLinks.forEach(link => {
         link.addEventListener('click', function(event) {
             event.preventDefault();
