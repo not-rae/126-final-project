@@ -8,8 +8,20 @@
 </head>
 <body>
     <header>
-        <div class="menu-toggle">☰</div>
-        <h1>HONESTORE</h1>
+        <div class="back-button">
+            <span>&#129032;</span> <!-- Back arrow symbol -->
+        </div>    
+        <div class="separator"></div>
+        <div class="Logo">
+            <img src="./dutchmill.jpg" alt="Logo">
+        </div>
+        <div class="titles">
+            <h1 class="menu">MENU</h1>
+            <h1 class="honestore">HONESTORE</h1>
+        </div>
+        <div class="time-container">
+            <div class="time" id="currentDateTime"></div>
+        </div>
     </header>
     <div class="container">
         <aside>
@@ -18,14 +30,13 @@
                 <li><a href="#" data-category="Beverages"><img src="./1.png" alt="Beverages"> Beverages</a></li>
                 <li><a href="#" data-category="Snack"><img src="./5.png" alt="Snack"> Snack</a></li>
                 <li><a href="#" data-category="Noodles"><img src="./2.png" alt="Noodles"> Noodles</a></li>
-                <li><a href="#" data-category="School Supplies"><img src="./3.png" alt="School Supplies"> School<br>Supplies</a></li>
+                <li><a href="#" data-category="School Supplies"><img src="./3.png" alt="School Supplies">School<br>Supplies</a></li>
                 <li><a href="#" data-category="Toiletries"><img src="./4.png" alt="Toiletries"> Toiletries <br>& Laundry</a></li>
             </ul>
         </aside>
         <main>
             <h2>Dashboard</h2>
             <div class="product-list">
-                <!-- Example products -->
                 <div class="product" data-category="Coffee">
                     <img src="./kopiko.jpg" alt="kopiko">
                     <h3>Kopiko</h3>
@@ -63,6 +74,34 @@
                 </div>
             </div>
         </main>
+        
+        <div class="right-panel">
+            <div class="customer-info">
+                <div class="orderID">Order ID</div>
+                <h3>Customer Information</h3>   
+                <label for="customer-name"></label>
+                <input type="text" id="customer-name" name="customer-name" placeholder="Customer name">
+            </div>
+            <div class="order-details">
+                <hr>
+                <h3>Order details</h3>
+                <ul id="order-list">
+                    <!-- Order items will be dynamically added here -->
+                </ul>
+                <hr>
+                <p>
+                    <span>Total:</span>
+                    <span id="total-price">₱ 00.00</span>
+                </p>
+            </div>
+            <h3>Payment Option</h3>
+            <div class="payment-option-container">
+                <div class="payment-option">
+                    <button id="cash-payment">Cash</button>
+                    <button id="gcash-payment">GCash</button>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
