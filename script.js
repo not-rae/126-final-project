@@ -20,16 +20,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update the time every second
     setInterval(updateTime, 1000);
 
-    // Add event listeners for category links
+    // Category buttons
     categoryLinks.forEach(link => {
         link.addEventListener('click', function(event) {
             event.preventDefault();
             const category = this.getAttribute('data-category');
 
-            // Remove active class from all links
             categoryLinks.forEach(link => link.classList.remove('active'));
 
-            // Add active class to the clicked link
             this.classList.add('active');
 
             // Filter products based on category
@@ -43,12 +41,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add event listener for menu toggle
     menuToggle.addEventListener('click', () => {
         aside.classList.toggle('active');
     });
 
-    // Add event listeners for payment buttons
+    // payment buttons
     buttons.forEach(button => {
         button.addEventListener('click', function() {
             buttons.forEach(btn => btn.style.backgroundColor = "#DDB892");
