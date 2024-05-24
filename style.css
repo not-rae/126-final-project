@@ -1,32 +1,45 @@
-body {
-    font-family: Poppins, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
     display: flex;
     flex-direction: column;
     height: 100vh;
     background-color: #FEFAE0;
+    
 }
 
 header {
-    max-width:100%;
     background-color: #D4A373;
     display: flex;
     align-items: center;
-    padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
     gap: 1rem;
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 1000;
 }
 
 .back-button {
     display: flex;
     align-items: center;
-    margin-right: 10px; 
+    margin-right: 5px; 
     margin-left: 10px;
 }
 
 .back-button span {
-    font-size: 30px; 
+    font-size: 35px; 
     cursor: pointer; 
 }
 
@@ -71,17 +84,21 @@ header {
 
 .time {
     color: #000;
+    font-size: 15px;
     font-weight: bold;
-    margin: 15px;
+    margin: 10px;
 }
 
-.container {
+.category-container {
+    padding-top: 4rem;
     display: flex;
     flex: 1;
+    position: fixed;
+    
 }
 
 aside {
-    width: 100px;
+    width: 95px;
     background-color: #D4A373;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
@@ -120,57 +137,84 @@ aside ul li a.active {
     color: #000;
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-   margin: 12px;
+    margin: 12px;
 }
 
 main {
-    flex: 1;
-    overflow-y: auto;
+    position: relative; /* Fix the position of the main element */
+    top: 64px; /* Distance from the top of the viewport */
+    left: 95px; /* Distance from the left of the viewport */
+    height: 800px; /* Set the fixed height */
+    width: 800px;  /* Set the fixed width */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden;
 }
 
 main h2 {
     margin-top: 0px;
-    font-size: 18px;
+    font-size: 15px;
     background-color: white;
     padding: 10px;
     max-width: 5000px;
 }
 
 .product-list {
-    display: flex;
-    flex-wrap: wrap;
-    padding-left: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, auto));
     gap: 1rem;
+    padding: 1rem;
+    overflow-y: auto;
+    max-height: 100%; /* Use full height of the parent container */
+    scroll-behavior: smooth;
+    position: relative;
 }
 
 .product {
-    border: 1px solid #FFFFFF;
-    padding: 1rem;
-    width: calc(25% - 1rem);
+    position: relative;
+    background-color: #FFFFFF;
     box-sizing: border-box;
     text-align: center;
-    background-color: #FFFFFF;
-    border-radius: 5%;
-    transition: transform 0.3s ease;
+    border-color: #D2B48C;
+}
+
+.product:hover {
+    padding: 10px;
+    transition: 0.4s;
+    background-color: #D2B48C;
 }
 
 .product img {
     max-width: 100%;
     height: auto;
+    margin-bottom: 0.5rem;
 }
 
-.product:hover {
-    transform: scale(1.05);
-    background-color: #D2B48C;
+.product-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.05rem;
 }
+
+.price {
+    font-weight: 500;
+}
+
 
 /* right panel */
 .right-panel {
-    width: 300px;
+    position: fixed; /* Fixes the panel in place */
+    right: 0; /* Aligns the panel to the right side of the viewport */
+    width: 330px;
+    height: 100vh; /* Ensures the panel takes the full height of the viewport */
     padding: 2rem;
+    margin-bottom: 30px;
     background-color: #FFFFFF;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow-y: auto; /* Adds a vertical scrollbar if content overflows */
 }
+
 
 .right-panel .customer-info,
 .right-panel .order-details,
@@ -180,23 +224,8 @@ main h2 {
 
 .right-panel h3 {
     margin-top: 0;
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 10px;
-}
-
-#order-list {
-    list-style: none;
-    padding: 0;
-}
-
-#order-list li {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-#total-price {
-    font-weight: bold;
 }
 
 button {
@@ -241,7 +270,7 @@ button:hover {
     font-family: Arial, sans-serif; 
     display: flex; 
     width: 253px;
-    height: 23px;
+    height: 38px;
     margin-bottom: 20px;
 }
 
@@ -250,10 +279,113 @@ button:hover {
     border: 1px solid #000;
 }
 
+.order-box {
+    display: grid;
+    grid-template-columns: 32% 50% 18%;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.order-img {
+    max-width: 100%;
+    height: 100px;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.detail-box {
+    display: grid;
+    row-gap: 0.5rem;
+}
+
+.order-product-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.order-price {
+    font-weight: 500;
+}
+
+.quantity-container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 1px;
+}
+
+.quantity-container button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 3px;
+}
+
+.quantity-container button:hover {
+    background-color: #D40000;
+}
+
+.btn-decrement {
+    background-color: #E4E4E4;
+    color: #000;
+}
+
+.btn-increment {
+    background-color: #202020;
+    color: #ffffff;
+}
+
+.order-quantity {
+    border: none;
+    width: 28px;
+    height: 28px;
+    font-size: 20px;
+    text-align: center;  
+    background: none;
+}
+
+.order-remove {
+    font-size: 24px;
+    color:#D40000;
+    cursor: pointer;
+}
+
+.total {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+    border-top: 1px solid;
+
+}
+
+.total-title {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.total-price {
+    color:#D40000;
+    font-weight: bold;
+}
+
+
+
+.total-price {
+    margin-left: 0.5rem;
+}
+
 .payment-option-container {
     background-color: #DDB892; 
     border-radius: 30px; 
     justify-content: center; 
+    width: 253px;
 }
 
 .payment-option {
@@ -277,15 +409,77 @@ button:hover {
     margin: 3px;
 }
 
-.order-details p {
-    display: flex;
-    justify-content: space-between;
-    color: #828487;
+.cash-details {
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
-#total-price {
-    color: #D40000;
+.cash-payment {
+    border: 1px solid gray; 
+    background-color: transparent;
+    padding: 10px 20px; 
+    border-radius: 25px; 
+    font-size: 18px; 
+    font-family: Arial, sans-serif; 
+    display: flex; 
+    width: 253px;
+    height: 50px;
 }
+
+.change {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.change-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.change-price {
+    font-size: 1.3rem;
+    margin-left: 0.5rem;
+    color:#D40000;
+    font-weight: bold;
+}
+
+.gcash-details {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.referenceNo {
+    border: 1px solid gray; 
+    background-color: transparent;
+    padding: 10px 20px; 
+    border-radius: 25px; 
+    font-size: 18px; 
+    font-family: Arial, sans-serif; 
+    display: flex; 
+    width: 253px;
+    height: 50px;
+}
+
+.btn-buy {
+    display: flex;
+    margin: 1.5rem auto 0 auto;
+    padding: 12px 20px;
+    border: none;
+    background-color: #D40000;
+    color:#FFFFFF;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 253px;
+    cursor: pointer;
+    justify-content: center;
+    border-radius: 25px;
+}
+
+.btn-buy:hover {
+    background-color: #000;
+}
+
 
 @media (max-width: 768px) {
     aside {
@@ -293,7 +487,7 @@ button:hover {
         height: auto;
     }
 
-    .container {
+    .category-container {
         flex-direction: column;
     }
 

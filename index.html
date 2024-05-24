@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HONESTORE</title>
+    <title>HONESTORE: MENU</title>
     <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <header>
         <div class="back-button">
-            <span>&#129032;</span> 
+            <span class='bx bx-left-arrow-circle'></span>
         </div>    
         <div class="separator"></div>
         <div class="Logo">
@@ -23,55 +24,248 @@
             <div class="time" id="currentDateTime"></div>
         </div>
     </header>
-    <div class="container">
+
+    <div class="category-container">
         <aside>
             <ul>
-                <li><a href="#" data-category="Coffee"><img src="./Untitled design (1).png" alt="Coffee"> Coffee</a></li>
-                <li><a href="#" data-category="Beverages"><img src="./1.png" alt="Beverages"> Beverages</a></li>
-                <li><a href="#" data-category="Snack"><img src="./5.png" alt="Snack"> Snack</a></li>
-                <li><a href="#" data-category="Noodles"><img src="./2.png" alt="Noodles"> Noodles</a></li>
-                <li><a href="#" data-category="School Supplies"><img src="./3.png" alt="School Supplies">School<br>Supplies</a></li>
-                <li><a href="#" data-category="Toiletries"><img src="./4.png" alt="Toiletries"> Toiletries <br>& Laundry</a></li>
+                <li><a href="#" data-category="Coffee"><img src="./icons/coffee_icon.png" alt="Coffee"> Coffee</a></li>
+                <li><a href="#" data-category="Beverages"><img src="./icons/beverages_icon.png" alt="Beverages"> Beverages</a></li>
+                <li><a href="#" data-category="Snack"><img src="./icons/snakc_icon.png" alt="Snack"> Snack</a></li>
+                <li><a href="#" data-category="Noodles"><img src="./icons/snakc_icon.png" alt="Noodles"> Noodles</a></li>
+                <li><a href="#" data-category="School Supplies"><img src="./icons/schoolSupplies_icon.png" alt="School Supplies">School<br>Supplies</a></li>
+                <li><a href="#" data-category="Toiletries"><img src="./icons/toiletriesLaundry_icon.png" alt="Toiletries"> Toiletries <br>& Laundry</a></li>
             </ul>
         </aside>
+
         <main>
             <h2>Dashboard</h2>
             <div class="product-list">
                 <div class="product" data-category="Coffee">
-                    <img src="./kopiko.jpg" alt="kopiko">
-                    <h3>Kopiko</h3>
-                    <p>₱ 00.00</p>
+                    <img src="./coffee/kopiko black.jpg" alt="kopiko" class="product-img">
+                    <h3 class="product-title">Kopiko black</h3>
+                    <span class="price">₱ 5.00</span>
                 </div>
                 <div class="product" data-category="Coffee">
-                    <img src="./lucky day.jpg" alt="luckyDay">
-                    <h3>Lucky Day</h3>
-                    <p>₱ 00.00</p>
+                    <img src="./coffee/lucky day.jpg" alt="luckyDay" class="product-img">
+                    <h3 class="product-title">Lucky Day</h3>
+                    <span class="price">₱ 00.00</span>
                 </div>
                 <div class="product" data-category="Beverages">
-                    <img src="./dutchmill.jpg" alt="dutchmill">
-                    <h3>Dutch Mill</h3>
-                    <p>₱ 00.00</p>
+                    <img src="./beverages/dutchmill.jpg" alt="dutchmill" class="product-img">
+                    <h3 class="product-title">Dutch Mill</h3>
+                    <span class="price">₱ 15.00</span>
                 </div>
                 <div class="product" data-category="Noodles">
-                    <img src="./lucky me beef.jpg" alt="luckyMe">
-                    <h3>Lucky Me Beef</h3>
-                    <p>₱ 00.00</p>
+                    <img src="./noodles/lucky me beef.jpg" alt="luckyMe" class="product-img">
+                    <h3 class="product-title">Lucky Me Beef</h3>
+                    <span class="price">₱ 00.00</span>
                 </div>
                 <div class="product" data-category="School Supplies">
-                    <img src="./correction_tape.jpg" alt="correction_tape">
-                    <h3>Correction Tape</h3>
-                    <p>₱ 00.00</p>
+                    <img src="./supplies/correction_tape.jpg" alt="correction_tape" class="product-img">
+                    <h3 class="product-title">Correction Tape</h3>
+                    <span class="price">₱ 00.00</span>
                 </div>
                 <div class="product" data-category="Snack">
-                    <img src="./sky_flakes.jpg" alt="sky_flakes">
-                    <h3>Sky Flakes</h3>
-                    <p>₱ 00.00</p>
+                    <img src="./snack/sky_flakes.jpg" alt="sky_flakes" class="product-img">
+                    <h3 class="product-title">Sky Flakes</h3>
+                    <span class="price">₱ 00.00</span>
                 </div>
                 <div class="product" data-category="Toiletries">
-                    <img src="./creamsilk.jpg" alt="creamsilk">
-                    <h3>Cream Silk</h3>
-                    <p>₱ 00.00</p>
+                    <img src="./toiletries&laundry/creamsilk.jpg" alt="creamsilk" class="product-img">
+                    <h3 class="product-title">Cream Silk</h3>
+                    <span class="price">₱ 00.00</span>
                 </div>
+                <div class="product" data-category="Coffee">
+                    <img src="./coffee/cafe puro.jpg" alt="" class="product-img">
+                    <h3 class="product-title">cafe puro</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Coffee">
+                    <img src="./coffee/kopiko blanca.jpg" alt="kopiko" class="product-img">
+                    <h3 class="product-title">Kopiko blanca</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Coffee">
+                    <img src="./coffee/kopiko brown.jpg" alt="" class="product-img">
+                    <h3 class="product-title">Kopiko brown</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Coffee">
+                    <img src="./coffee/chilled latte.jpg" alt="" class="product-img">
+                    <h3 class="product-title">Kchilled latte</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Coffee">
+                    <img src="./coffee/chilled mocha.jpeg" alt="" class="product-img">
+                    <h3 class="product-title">chilled mocha</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Beverages">
+                    <img src="./beverages/absolute water.jpg" alt="" class="product-img">
+                    <h3 class="product-title">absolute water</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Beverages">
+                    <img src="./beverages/bear brand.jpg" alt="" class="product-img">
+                    <h3 class="product-title">bear brand</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Beverages">
+                    <img src="./beverages/gatorade.jpg" alt="" class="product-img">
+                    <h3 class="product-title">gatorade</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Beverages">
+                    <img src="./beverages/nutri boost.jpg" alt="" class="product-img">
+                    <h3 class="product-title">nutri boost</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Beverages">
+                    <img src="./beverages/royal.jpg" alt="" class="product-img">
+                    <h3 class="product-title">royal</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Beverages">
+                    <img src="./beverages/strawberry.jpg" alt="" class="product-img">
+                    <h3 class="product-title">strawberry</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Beverages">
+                    <img src="./beverages/tang.jpg" alt="" class="product-img">
+                    <h3 class="product-title">tang</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Snack">
+                    <img src="./snack/bread stcik.jpg" alt="" class="product-img">
+                    <h3 class="product-title">bread stick</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Snack">
+                    <img src="./snack/chocomucho.jpg" alt="" class="product-img">
+                    <h3 class="product-title">choco mucho</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Snack">
+                    <img src="./snack/cload 9.jpg" alt="" class="product-img">
+                    <h3 class="product-title">cloud 9</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Snack">
+                    <img src="./snack/hello.jpg" alt="" class="product-img">
+                    <h3 class="product-title">hello</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Snack">
+                    <img src="./snack/kitkat.jpg" alt="" class="product-img">
+                    <h3 class="product-title">kitkat</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Snack">
+                    <img src="./snack/loaded.jpg" alt="" class="product-img">
+                    <h3 class="product-title">loaded</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Snack">
+                    <img src="./snack/rebisco.jpg" alt="" class="product-img">
+                    <h3 class="product-title">rebisco</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Snack">
+                    <img src="./snack/stick o.jpg" alt="" class="product-img">
+                    <h3 class="product-title">stick-o</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Snack">
+                    <img src="./snack/waffer time.jpg" alt="" class="product-img">
+                    <h3 class="product-title">waffer time</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Noodles">
+                    <img src="./noodles/chicken.jpg" alt="" class="product-img">
+                    <h3 class="product-title">chicken</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Noodles">
+                    <img src="./noodles/chili mansi.jpg" alt="" class="product-img">
+                    <h3 class="product-title">chili mansi</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Noodles">
+                    <img src="./noodles/kalamansi.jpg" alt="" class="product-img">
+                    <h3 class="product-title">kalamansi</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Noodles">
+                    <img src="./noodles/lomi.jpg" alt="" class="product-img">
+                    <h3 class="product-title">lomi</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Noodles">
+                    <img src="./noodles/original.jpg" alt="" class="product-img">
+                    <h3 class="product-title">original</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Noodles">
+                    <img src="./noodles/spicy.jpg" alt="" class="product-img">
+                    <h3 class="product-title">spicy</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="School Supplies">
+                    <img src="./supplies/pencil.jpg" alt="" class="product-img">
+                    <h3 class="product-title">pencil</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="School Supplies">
+                    <img src="./supplies/scisssor.jpg" alt="" class="product-img">
+                    <h3 class="product-title">scissor</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="School Supplies">
+                    <img src="./supplies/tape.jpg" alt="" class="product-img">
+                    <h3 class="product-title">tape</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="School Supplies">
+                    <img src="./supplies/yellow paper.jpg" alt="" class="product-img">
+                    <h3 class="product-title">yellow paper</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/axion.jpg" alt="" class="product-img">
+                    <h3 class="product-title">axion</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/dove.jpg" alt="" class="product-img">
+                    <h3 class="product-title">dove</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/modess.jpg" alt="" class="product-img">
+                    <h3 class="product-title">modess</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/safeguard.jpg" alt="" class="product-img">
+                    <h3 class="product-title">safeguard</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/sisters.jpg" alt="" class="product-img">
+                    <h3 class="product-title">sisters</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/surf.jpg" alt="" class="product-img">
+                    <h3 class="product-title">surf</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/tide.jpg" alt="" class="product-img">
+                    <h3 class="product-title">tide</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+
             </div>
         </main>
         
@@ -79,27 +273,55 @@
             <div class="customer-info">
                 <div class="orderID">Order ID</div>
                 <h3>Customer Information</h3>   
-                <label for="customer-name"></label>
                 <input type="text" id="customer-name" name="customer-name" placeholder="Customer name">
             </div>
             <div class="order-details">
                 <hr>
                 <h3>Order details</h3>
-                <ul id="order-list">
-                    <!-- Order items will be dynamically added here -->
-                </ul>
-                <hr>
-                <p>
-                    <span>Total:</span>
-                    <span id="total-price">₱ 00.00</span>
-                </p>
+                <div class="order-content">
+                    <div class="order-box">
+                        <img src="./beverages/dutchmill.jpg" alt="" class="order-img">
+                        <div class="detail-box">
+                            <div class="order-product-title"> Dutch Mill</div>
+                            <div class="order-price">₱ 10.00</div>
+                        <div class="quantity-container">
+                            <button type="button" class="btn-decrement">-</button>
+                            <input type="text" value="1" class="order-quantity">
+                            <button type="button" class="btn-increment">+</button>
+                        </div>
+                            
+                        </div> 
+                        <i class='bx bxs-trash order-remove'></i>
+                    </div>
+                </div>
+
+                <!-- Total -->
+                <div class="total">
+                    <div class="total-title">Total:</div>
+                    <div class="total-price">₱ 0.00</div>
+                </div>
             </div>
+
+            <!-- Payment Option -->
             <h3>Payment Option</h3>
             <div class="payment-option-container">
                 <div class="payment-option">
                     <button id="cash-payment">Cash</button>
                     <button id="gcash-payment">GCash</button>
                 </div>
+            </div>
+            <div class="cash-details">
+                <input type="number" class="cash-payment" id="cashPaymentInput" placeholder="Input payment">
+                <div class="change">
+                    <div class="change-title">Change:</div>
+                    <div class="change-price" id="changeAmount">P0.00</div>
+                </div>
+                <button type="button" class="btn-buy" id="payNowButton">Pay Now</button>
+            </div>
+
+            <div class="gcash-details">
+                <input type="text" class="referenceNo" placeholder="Reference No.">
+                <button type="button" class="btn-buy">Pay Now</button>
             </div>
         </div>
     </div>
