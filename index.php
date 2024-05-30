@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+<style>
+    main {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 68.3rem;
+    }
+    .dashboard {
+        border-bottom: none;
+    }
+</style>
 <body>
     <header>
         <div class="back-button">
@@ -31,14 +42,20 @@
                 <li><a href="#" data-category="Coffee"><img src="./icons/coffee_icon.png" alt="Coffee"> Coffee</a></li>
                 <li><a href="#" data-category="Beverages"><img src="./icons/beverages_icon.png" alt="Beverages"> Beverages</a></li>
                 <li><a href="#" data-category="Snack"><img src="./icons/snakc_icon.png" alt="Snack"> Snack</a></li>
-                <li><a href="#" data-category="Noodles"><img src="./icons/snakc_icon.png" alt="Noodles"> Noodles</a></li>
+                <li><a href="#" data-category="Noodles"><img src="./icons/noodles_icon.png" alt="Noodles"> Noodles</a></li>
                 <li><a href="#" data-category="School Supplies"><img src="./icons/schoolSupplies_icon.png" alt="School Supplies">School<br>Supplies</a></li>
                 <li><a href="#" data-category="Toiletries"><img src="./icons/toiletriesLaundry_icon.png" alt="Toiletries"> Toiletries <br>& Laundry</a></li>
+                <li><a href="#" data-category="Others"><img src="./icons/others.png" alt="Others">Others</a></li>
+
             </ul>
         </aside>
+    </div>
 
+        <!-- <div class="main"> -->
         <main>
-            <h2>Dashboard</h2>
+            <div class="dashboard">
+                <h2>Dashboard</h2>
+            </div>
             <div class="product-list">
                 <?php
                 include 'DBconnector.php';
@@ -62,8 +79,9 @@
                 $conn->close();
                 ?>
             </div>
+        <!-- </div> -->
         </main>
-        
+        <div class="category-container">
         <div class="right-panel">
             <div class="customer-info">
                 <div class="orderID">Order ID</div>
@@ -119,7 +137,7 @@
                 <button type="button" class="btn-buy">Pay Now</button>
             </div>
         </div>
-    </div>
+            </div>
     <script src="script.js"></script>
 </body>
 </html>

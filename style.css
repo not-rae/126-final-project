@@ -10,11 +10,6 @@
     list-style: none;
     text-decoration: none;
 }
-/* style.css */
-/* .product-img {
-    width: 10px; 
-    height: 50px; 
-} */
 
 body {
     display: flex;
@@ -146,13 +141,12 @@ aside ul li a.active {
 }
 
 main {
-    position: relative; /* Fix the position of the main element */
-    top: 64px; /* Distance from the top of the viewport */
-    left: 95px; /* Distance from the left of the viewport */
-    height: 800px; /* Set the fixed height */
-    width: 800px;  /* Set the fixed width */
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: hidden;
+    position: relative;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50px;
+    max-width:100%;
 }
 
 main h2 {
@@ -169,9 +163,10 @@ main h2 {
     gap: 1rem;
     padding: 1rem;
     overflow-y: auto;
-    max-height: 100%; /* Use full height of the parent container */
+    max-height: 100%;
     scroll-behavior: smooth;
     position: relative;
+    margin-top: 10px;
 }
 
 .product {
@@ -208,16 +203,15 @@ main h2 {
 
 /* right panel */
 .right-panel {
-    position: fixed; /* Fixes the panel in place */
-    right: 0; /* Aligns the panel to the right side of the viewport */
+    position: fixed; 
+    right: 0; 
     width: 330px;
-    height: 100vh; /* Ensures the panel takes the full height of the viewport */
+    height: 100vh; 
     padding: 2rem;
     margin-bottom: 30px;
     background-color: #FFFFFF;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    overflow-y: auto; /* Adds a vertical scrollbar if content overflows */
 }
 
 
