@@ -10,6 +10,11 @@
     list-style: none;
     text-decoration: none;
 }
+/* style.css */
+/* .product-img {
+    width: 10px; 
+    height: 50px; 
+} */
 
 body {
     display: flex;
