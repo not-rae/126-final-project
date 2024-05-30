@@ -1,7 +1,7 @@
 <?php
 include 'DBconnector.php';
 
-$sql = "CREATE TABLE inventory (
+$sql = "CREATE TABLE IF NOT EXISTS inventory (
     item_id INT(11) AUTO_INCREMENT PRIMARY KEY,
     item_name VARCHAR(255) NOT NULL,
     category VARCHAR(255) NOT NULL,
