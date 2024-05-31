@@ -17,6 +17,58 @@
     .dashboard {
         border-bottom: none;
     }
+    
+    #showQRCodeButton {
+        background-color: transparent;
+        color: #000000;
+        font-weight: bold;
+    }
+    /* Popup container */
+    .popup {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    /* Popup content */
+    .popup-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 300px;
+        text-align: center;
+        border-radius: 25px;
+    }
+
+    /* Close button */
+    .close {
+        color: #ffffff;
+        background-color: #009900;
+        border-radius: 50px;
+        font-size: 25px;
+        font-weight: bold;
+        width: 60%;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #ffffff;
+        background-color: #008000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
 </style>
 <body>
     <header>
@@ -51,7 +103,6 @@
         </aside>
     </div>
 
-        <!-- <div class="main"> -->
         <main>
             <div class="dashboard">
                 <h2>Dashboard</h2>
@@ -79,7 +130,6 @@
                 $conn->close();
                 ?>
             </div>
-        <!-- </div> -->
         </main>
         <div class="category-container">
         <div class="right-panel">
@@ -133,11 +183,37 @@
             </div>
 
             <div class="gcash-details">
+                <button id="showQRCodeButton">Show QR Code</button>
                 <input type="text" class="referenceNo" placeholder="Reference No.">
                 <button type="button" class="btn-buy">Pay Now</button>
             </div>
-        </div>
+            <div id="qrCodePopup" class="popup">
+                <div class="popup-content">
+                    <h2>QR Code</h2>
+                    <hr style="max-width: 100%; border: 2px solid #000;">
+                    <img src="qr-code.png" alt="QR Code" style="max-width: 100%; height: auto;">
+                    <button class="close">Done</button>
+                </div>
             </div>
+            <script>
+                    // Function to toggle the display of the popup
+                    function togglePopup() {
+                        var popup = document.getElementById("qrCodePopup");
+                        popup.style.display = (popup.style.display === "block") ? "none" : "block";
+                    }
+
+                    // Add event listener to the "Show QR Code" button
+                    document.getElementById("showQRCodeButton").addEventListener("click", function() {
+                        togglePopup();
+                    });
+
+                    // Add event listener to the close button of the popup to close it
+                    document.querySelector(".popup-content .close").addEventListener("click", function() {
+                        togglePopup();
+                    });
+                </script>
+        </div>
+        </div>
     <script src="script.js"></script>
 </body>
 </html>
