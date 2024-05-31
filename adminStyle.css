@@ -66,6 +66,12 @@ header {
     font-weight: bold;
 }
 
+.tab.active {
+    background-color: #b58650; /* Adjust this color as needed */
+    color: white;
+    font-weight: bold;
+}
+
 .tab:hover {
     background-color: #b58650;
     color: white;
