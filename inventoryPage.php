@@ -87,8 +87,8 @@ if ($category == 'all') {
                         echo "<td>" . htmlspecialchars($row['quantity']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['restockDate']) . "</td>";
                         echo "<td>";
-                        echo "<a href='edit_product.php?id=" . htmlspecialchars($row['item_id']) . "' class='edit-button'>Edit</a> ";
-                        echo "<a href='delete_product.php?id=" . htmlspecialchars($row['item_id']) . "' class='delete-button' onclick='return confirm(\"Are you sure you want to delete this product?\");'>Delete</a>";
+                        echo "<a href='edit_product.php?id=" . htmlspecialchars($row['item_id']) . "' style='color: blue; font-weight: bold;'>Edit</a> ";
+                        echo "<a href='delete_product.php?id=" . htmlspecialchars($row['item_id']) . "' style='color: red; font-weight: bold;' onclick='return confirm(\"Are you sure you want to delete this product?\");'>Delete</a>";
                         echo "</td>";
                         echo "</tr>";
                     }

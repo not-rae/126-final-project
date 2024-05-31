@@ -91,8 +91,8 @@ $totalSale = 0; // Initialize total sale variable
                         echo "<td>" . htmlspecialchars($row['gcash_purchase']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['purchase_change']) . "</td>";
                         echo "<td>";
-                        echo "<a href='edit_transaction.php?id=" . htmlspecialchars($row['order_id']) . "' class='edit-button'>Edit</a> ";
-                        echo "<a href='delete_transaction.php?id=" . htmlspecialchars($row['order_id']) . "' class='delete-button' onclick='return confirm(\"Are you sure you want to delete this product?\");'>Delete</a>";
+                        echo "<a href='edit_transaction.php?id=" . htmlspecialchars($row['order_id']) . "' style='color: blue; font-weight: bold;'>Edit</a> ";
+                        echo "<a href='delete_transaction.php?id=" . htmlspecialchars($row['order_id']) . "' style='color: red; font-weight: bold;' onclick='return confirm(\"Are you sure you want to delete this product?\");'>Delete</a>";
                         echo "</td>";
                         echo "</tr>";
                         

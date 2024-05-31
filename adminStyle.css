@@ -119,16 +119,6 @@ th, td {
     border-bottom: 1px solid #ddd;
 }
 
-.edit-button{
-    color: orange;
-    font-weight: bold; 
-}
-
-.delete-button{
-    font-weight: bold; 
-    color: red;
-}
-
 .form-container {
     background-color: #fff;
     padding: 20px;
