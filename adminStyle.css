@@ -49,7 +49,7 @@ header {
 
 .dashboard {
     display: flex;
-    justify-content: space-between; 
+    justify-content: flex-start; 
     align-items: center;
     gap: 1rem;
     padding: 0.5rem 1rem;
@@ -119,11 +119,21 @@ th, td {
     border-bottom: 1px solid #ddd;
 }
 
+.edit-button{
+    color: orange;
+    font-weight: bold; 
+}
+
+.delete-button{
+    font-weight: bold; 
+    color: red;
+}
 
 .form-container {
     background-color: #fff;
     padding: 20px;
-    margin: 20px auto;
+    margin: 5px auto;
+    margin-bottom: 20px;
     width: 50%;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -162,4 +172,17 @@ input[type="submit"]:hover {
 
 .edit-title {
     text-align: center;
+}
+
+.total-sale {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    background-color: #FEFAE0;
+    border: 4px solid #9f7347;
+    border-radius: 20px;
+    font-weight: bold;
 }

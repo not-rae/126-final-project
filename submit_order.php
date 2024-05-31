@@ -1,25 +1,26 @@
 <?php
-// Assuming you've established the database connection before this point
+include 'DBconnector.php';
 
-// Retrieve form data
-$customer_name = $_POST['customer_name'];
-$order_quantity = $_POST['order_quantity'];
-$payment_method = $_POST['payment_method'];
-$cash_purchase = $_POST['cash_purchase'];
-$gcash_purchase = $_POST['gcash_purchase'];
-$purchase_total = $_POST['purchase_total']; // Retrieve purchase total
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $customer_name = mysqli_real_escape_string($conn, $_POST['customer_name']);
+    $order_quantity = (int)$_POST['order_quantity'];
+    $purchase_total = (float)$_POST['purchase_total'];
+    $payment_method = mysqli_real_escape_string($conn, $_POST['payment_method']);
+    $cash_purchase = isset($_POST['cash_purchase']) ? (float)$_POST['cash_purchase'] : 0;
+    $gcash_purchase = isset($_POST['gcash_purchase']) ? mysqli_real_escape_string($conn, $_POST['gcash_purchase']) : '';
+    $purchase_change = 0;
 
-// Assuming you have your SQL query to insert data into the database
-$sql = "INSERT INTO your_table_name (customer_name, order_quantity, payment_method, cash_purchase, gcash_purchase, purchase_total) 
-        VALUES ('$customer_name', '$order_quantity', '$payment_method', '$cash_purchase', '$gcash_purchase', '$purchase_total')";
 
-// Execute the query
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    $sql = "INSERT INTO transaction (customer_name, item_id, order_quantity, purchase_total, payment_method, cash_purchase, gcash_purchase, purchase_change)
+            VALUES ('$customer_name', 1, $order_quantity, $purchase_total, '$payment_method', $cash_purchase, '$gcash_purchase', $purchase_change)";
+
+    if ($conn->query($sql) === TRUE) {
+        header("Location: index.php");
+        exit();
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $conn->close();
 }
-
-// Close the database connection
-$conn->close();
 ?>
