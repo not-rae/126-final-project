@@ -9,7 +9,7 @@ include 'DBconnector.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Transaction</title>
+    <title>Products Inventory</title>
     <link rel="stylesheet" href="adminStyle.css">
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -34,9 +34,16 @@ include 'DBconnector.php';
         <a href="inventoryPage.php" class="tab" id="inventory-tab">Inventory</a>
         <a href="transactionPage.php" class="tab" id="transactions-tab">Transactions</a>
         <a href="add_products.php" class="tab" id="add-product-tab">Add Product</a>
-        <div class="date-dropdown">
-            <select name="date" id="date">
-                <option value="all">Choose Date</option>
+        <div class="category-dropdown">
+            <select name="categories" id="categories">
+                <option value="all">Product Categories</option>
+                <option value="coffee">Coffee</option>
+                <option value="beverages">Beverages</option>
+                <option value="snacks">Snacks</option>
+                <option value="noodles">Noodles</option>
+                <option value="school-supplies">School Supplies</option>
+                <option value="toiletries">Toiletries and Laundry</option>
+                <option value="others">Others</option>
             </select>
         </div>
     </nav>
