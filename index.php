@@ -368,12 +368,15 @@
                 event.preventDefault();
                 const category = this.getAttribute('data-category');
 
+                // Remove active class from all category links
                 categoryLinks.forEach(link => link.classList.remove('active'));
+                // Add active class to the clicked category link
                 this.classList.add('active');
 
                 // Filter products based on category
                 products.forEach(product => {
-                    if (category === 'All' || product.getAttribute('data-category') === category) {
+                    const productCategory = product.getAttribute('data-category');
+                    if (category === 'All' || productCategory === category) {
                         product.style.display = 'block';
                     } else {
                         product.style.display = 'none';
