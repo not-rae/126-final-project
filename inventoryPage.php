@@ -60,6 +60,7 @@ $result = $conn->query($query);
                     <th>Unit Price</th>
                     <th>Quantity</th>
                     <th>Restock Date</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -73,6 +74,10 @@ $result = $conn->query($query);
                         echo "<td>" . htmlspecialchars($row['price']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['quantity']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['restockDate']) . "</td>";
+                        echo "<td>";
+                        echo "<a href='edit_product.php?id=" . htmlspecialchars($row['item_id']) . "' class='edit-button'>Edit</a> ";
+                        echo "<a href='delete_product.php?id=" . htmlspecialchars($row['item_id']) . "' class='delete-button' onclick='return confirm(\"Are you sure you want to delete this product?\");'>Delete</a>";
+                        echo "</td>";
                         echo "</tr>";
                     }
                 } else {
