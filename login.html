@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HONESTORE</title>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="loginStyle.css">
+    </head>
+    <body>
+        <div class="header-buttons">
+            <button onclick="location.href='home.html'">Home</button>
+            <button onclick="location.href='about.html'">About</button>
+        </div>
+        <div class="form-container">
+            <img src="logo.png" alt="Logo">
+            <form action="inventory.html" method="post">
+                <a>Log in as <strong>ADMIN</strong>
+                <input type="password" id="password" name="password" placeholder="Enter Password" maxlength="8" required>
+                <button type="submit">Log in</button>
+            </form>
+        </div>
+        <script>
+            function validatePassword() {
+                const password = document.getElementById('password').value;
+                const specialCharPattern = /[!@#$%^&*(),.?":{}|<>]/;
+                if (password.length > 8) {
+                    alert('Password must be at most 8 characters long.');
+                    return false;
+                }
+                if (!specialCharPattern.test(password)) {
+                    alert('Password must contain at least one special character.');
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </body>
+</html>
