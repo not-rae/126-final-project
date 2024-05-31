@@ -12,7 +12,7 @@
         display: flex;
         flex-direction: column;
         height: 100vh;
-        width: 68.3rem;
+        width: 69rem;
     }
     .dashboard {
         border-bottom: none;
@@ -73,7 +73,7 @@
 <body>
     <header>
         <div class="back-button">
-        <a href="home.html"><span class='bx bx-left-arrow-circle'></span></a>
+            <a href="home.html"><span class='bx bx-left-arrow-circle'></span></a>
         </div>    
         <div class="separator"></div>
         <div class="Logo">
@@ -135,7 +135,7 @@
         </main>
         <div class="category-container">
         <div class="right-panel">
-    <div class="customer-info">
+        <div class="customer-info">
         <!-- <div class="orderID">Order ID</div> -->
         <h3>Customer Information</h3>
         <form id="orderForm" method="POST" action="submit_order.php">
@@ -224,9 +224,7 @@
         const aside = document.querySelector('aside');
         const buttons = document.querySelectorAll('.payment-option button');
         const menuToggle = document.getElementById('menu-toggle');
-
     
-
         // Initialize an empty array to store selected products
         let selectedProducts = [];
 
