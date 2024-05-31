@@ -14,9 +14,6 @@
         height: 100vh;
         width: 69rem;
     }
-    .dashboard {
-        border-bottom: none;
-    }
     
     #showQRCodeButton {
         background-color: transparent;
@@ -102,36 +99,38 @@
             </ul>
         </aside>
     </div>
+        <section> 
+            <main>
+                <div class="dashboard">
+                    <h2>Dashboard</h2>
+                </div>
+                <div class="product-list">
+                <?php
+                include 'DBconnector.php';
 
-        <main>
-            <div class="dashboard">
-                <h2>Dashboard</h2>
-            </div>
-            <div class="product-list">
-            <?php
-            include 'DBconnector.php';
+                $sql = "SELECT * FROM inventory";
+                $result = $conn->query($sql);
 
-            $sql = "SELECT * FROM inventory";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                    echo '<div class="product" data-category="' . htmlspecialchars($row["category"]) . '" data-name="' . htmlspecialchars($row["item_name"]) . '" data-price="' . htmlspecialchars($row["price"]) . '">';
-                    // Constructing the image URL by combining the base URL of your images folder with the image file name
-                    $imageURL = 'uploaded_files/' . htmlspecialchars($row["image_path"]);
-                    echo '<img src="' . $imageURL . '" alt="' . htmlspecialchars($row["item_name"]) . '" class="product-img">';
-                    echo '<h3 class="product-title">' . htmlspecialchars($row["item_name"]) . '</h3>';
-                    echo '<span class="price">₱ ' . htmlspecialchars(number_format($row["price"], 2)) . '</span>';
-                    echo '<p class="quantity">Quantity: ' . htmlspecialchars($row["quantity"]) . '</p>';
-                    echo '</div>';
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo '<div class="product" data-category="' . htmlspecialchars($row["category"]) . '" data-name="' . htmlspecialchars($row["item_name"]) . '" data-price="' . htmlspecialchars($row["price"]) . '">';
+                        // Constructing the image URL by combining the base URL of your images folder with the image file name
+                        $imageURL = 'uploaded_files/' . htmlspecialchars($row["image_path"]);
+                        echo '<img src="' . $imageURL . '" alt="' . htmlspecialchars($row["item_name"]) . '" class="product-img">';
+                        echo '<h3 class="product-title">' . htmlspecialchars($row["item_name"]) . '</h3>';
+                        echo '<span class="price">₱ ' . htmlspecialchars(number_format($row["price"], 2)) . '</span>';
+                        echo '<p class="quantity">Quantity: ' . htmlspecialchars($row["quantity"]) . '</p>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo "0 results";
                 }
-            } else {
-                echo "0 results";
-            }
-            $conn->close();
-            ?>
-            </div>
-        </main>
+                $conn->close();
+                ?>
+                </div>
+            </main>
+        </section>
+        
         <div class="category-container">
         <div class="right-panel">
         <div class="customer-info">
