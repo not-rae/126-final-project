@@ -57,6 +57,7 @@ if(isset($_POST['post'])){
     </script>
 </head>
 <body>
+
     <header>  
         <div class="title">
             <h1 class="honestore">HONESTORE</h1>
@@ -66,18 +67,13 @@ if(isset($_POST['post'])){
             <h3 class="logout-text">Logout</h3>
         </div>  
     </header>
-    
-    <div class="spacer"></div>
+
+    <div class="spacer" style="margin-top: 50px;">
 
     <nav class="dashboard">
         <a href="inventoryPage.php" class="tab" id="inventory-tab">Inventory</a>
         <a href="transactionPage.php" class="tab" id="transactions-tab">Transactions</a>
         <a href="add_products.php" class="tab" id="add-product-tab">Add Product</a>
-        <div class="date-dropdown">
-            <select name="date" id="date">
-                <option value="all">Choose Date</option>
-            </select>
-        </div>
     </nav>
 
     <div class="form-container">
