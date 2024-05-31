@@ -24,10 +24,10 @@ $result = $conn->query($query);
         <div class="title">
             <h1 class="honestore">HONESTORE</h1>
         </div>
-        <div class="logout">
-            <img class="logout-button" src="logout-button.svg" alt="Logout Button">
-            <h3 class="logout-text">Logout</h3>
-        </div>  
+            <a href="home.html">
+                <img class="logout-button" src="logout-button.svg" alt="Logout Button">
+                <h3 class="logout-text">Logout</h3>
+            </a>
     </header>
     
     <div class="spacer"></div>
