@@ -1,0 +1,89 @@
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end; /* Move the container to the right */
+    align-items: center;
+    height: 100vh;
+    background-image: url('Honestore.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    flex-direction: column;
+}
+.header-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.header-buttons button {
+    background-color: #d40000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.header-buttons button:hover {
+    background-color: #ff0000;
+}
+
+.form-container {
+    position: absolute;
+    top: 50%;
+    right: 100px; /* Adjust this value to position the container on the right */
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    padding: 30px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(216, 58, 58, 0.2);
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container img {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin-bottom: 10px; 
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-container a {
+    text-align: center;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the form elements */
+}
+.form-container form input,
+.form-container form button {
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+    padding: 15px;
+}
+
+.form-container form button {
+    background-color: #d40000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(216, 58, 58, 0.2);
+}
+.header-buttons button:hover {
+    background-color: #ff0000;
+}
+
