@@ -159,3 +159,7 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #9f7347;
 }
+
+.edit-title {
+    text-align: center;
+}
