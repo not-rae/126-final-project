@@ -5,9 +5,10 @@ $sql = "CREATE TABLE IF NOT EXISTS inventory (
     item_id INT(11) AUTO_INCREMENT PRIMARY KEY,
     item_name VARCHAR(255) NOT NULL,
     category VARCHAR(255) NOT NULL,
-    image_path VARCHAR(255) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    quantity INT(11) NOT NULL DEFAULT 0
+    quantity INT(11) NOT NULL DEFAULT 0,
+    restockDate varchar(10) NOT NULL,
+    image_path VARCHAR(255) NOT NULL
 )";
 
 if ($conn->query($sql) === TRUE) {
