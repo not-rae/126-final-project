@@ -87,7 +87,7 @@ if(isset($_POST['post'])){
 
             <label for="category">Category: <span>*</span></label>
             <select id="category" name="category" required>
-                <option value="all">Product Categories</option>
+                <option>Product Categories</option>
                 <option value="coffee">Coffee</option>
                 <option value="beverages">Beverages</option>
                 <option value="snacks">Snacks</option>

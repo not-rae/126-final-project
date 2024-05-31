@@ -2,6 +2,8 @@
 
 include 'DBconnector.php';
 
+$query = "SELECT * FROM inventory";
+$result = $conn->query($query);
 ?>
 
 <!DOCTYPE html>
@@ -62,18 +64,30 @@ include 'DBconnector.php';
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>#000001</td>
-                    <td>Kopiko</td>
-                    <td>Coffee</td>
-                    <td>00.00</td>
-                    <td>00.00</td>
-                    <td>05/23/2024</td>
-                    <td></td>
-                </tr>
+                <?php
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($row['item_id']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['item_name']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['category']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['price']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['quantity']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['restockDate']) . "</td>";
+                        echo "<td>" . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='7'>No products found</td></tr>";
+                }
+                ?>
             </tbody>
         </table>
     </div>
     
 </body>
 </html>
+
+<?php
+$conn->close();
+?>
