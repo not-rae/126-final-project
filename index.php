@@ -362,29 +362,6 @@
         // update the time every second
         setInterval(updateTime, 1000);
 
-        // category buttons
-        categoryLinks.forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                const category = this.getAttribute('data-category');
-
-                // Remove active class from all category links
-                categoryLinks.forEach(link => link.classList.remove('active'));
-                // Add active class to the clicked category link
-                this.classList.add('active');
-
-                // Filter products based on category
-                products.forEach(product => {
-                    const productCategory = product.getAttribute('data-category');
-                    if (category === 'All' || productCategory === category) {
-                        product.style.display = 'block';
-                    } else {
-                        product.style.display = 'none';
-                    }
-                });
-            });
-        });
-
         menuToggle.addEventListener('click', () => {
             aside.classList.toggle('active');
         });
@@ -397,6 +374,31 @@
             });
         });
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const categoryLinks = document.querySelectorAll('aside ul li a');
+    const products = document.querySelectorAll('.product');
+
+    categoryLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const category = this.getAttribute('data-category');
+
+            categoryLinks.forEach(link => link.classList.remove('active'));
+            this.classList.add('active');
+
+            products.forEach(product => {
+                const productCategory = product.getAttribute('data-category');
+                if (category === 'All' || productCategory === category) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+
     </script>
 </body>
 </html>
