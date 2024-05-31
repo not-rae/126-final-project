@@ -5,6 +5,8 @@ include 'DBconnector.php';
 $query = "SELECT * FROM transaction";
 $result = $conn->query($query);
 
+$totalSale = 0; // Initialize total sale variable
+
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +20,20 @@ $result = $conn->query($query);
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('transactions-tab').classList.add('active');
         });
+
+        function searchTransactions() {
+            var input = document.getElementById('search').value.trim().toLowerCase();
+            var rows = document.querySelectorAll('tbody tr');
+
+            rows.forEach(function(row) {
+                var customerName = row.cells[1].textContent.trim().toLowerCase();
+                if (customerName.includes(input)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
     </script>
 </head>
 <body>
@@ -38,9 +54,7 @@ $result = $conn->query($query);
         <a href="transactionPage.php" class="tab" id="transactions-tab">Transactions</a>
         <a href="add_products.php" class="tab" id="add-product-tab">Add Product</a>
         <div class="date-dropdown">
-            <select name="date" id="date">
-                <option value="all">Choose Date</option>
-            </select>
+            <input type="text" id="search" onkeyup="searchTransactions()" placeholder="Search by Customer Name">
         </div>
     </nav>
 
@@ -81,6 +95,8 @@ $result = $conn->query($query);
                         echo "<a href='delete_transaction.php?id=" . htmlspecialchars($row['order_id']) . "' class='delete-button' onclick='return confirm(\"Are you sure you want to delete this product?\");'>Delete</a>";
                         echo "</td>";
                         echo "</tr>";
+                        
+                        $totalSale += $row['purchase_total'];
                     }
                 } else {
                     echo "<tr><td colspan='11'>No transaction record</td></tr>";
@@ -89,6 +105,8 @@ $result = $conn->query($query);
             </tbody>
         </table>
     </div>
+    
+    <div class="total-sale">TOTAL SALE: <?php echo $totalSale; ?></div>
     
 </body>
 </html>
