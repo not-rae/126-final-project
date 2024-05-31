@@ -1,9 +1,17 @@
 <?php
-
 include 'DBconnector.php';
 
-$query = "SELECT * FROM inventory";
-$result = $conn->query($query);
+$category = isset($_GET['category']) ? $_GET['category'] : 'all';
+
+if ($category == 'all') {
+    $query = "SELECT * FROM inventory";
+    $result = $conn->query($query);
+} else {
+    $query = $conn->prepare("SELECT * FROM inventory WHERE category = ?");
+    $query->bind_param("s", $category);
+    $query->execute();
+    $result = $query->get_result();
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +24,10 @@ $result = $conn->query($query);
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('inventory-tab').classList.add('active');
+            document.getElementById('categories').addEventListener('change', function() {
+                var selectedCategory = this.value;
+                window.location.href = 'inventoryPage.php?category=' + selectedCategory;
+            });
         });
     </script>
 </head>
@@ -38,14 +50,14 @@ $result = $conn->query($query);
         <a href="add_products.php" class="tab" id="add-product-tab">Add Product</a>
         <div class="category-dropdown">
             <select name="categories" id="categories">
-                <option value="all">Product Categories</option>
-                <option value="coffee">Coffee</option>
-                <option value="beverages">Beverages</option>
-                <option value="snacks">Snacks</option>
-                <option value="noodles">Noodles</option>
-                <option value="school-supplies">School Supplies</option>
-                <option value="toiletries">Toiletries and Laundry</option>
-                <option value="others">Others</option>
+                <option value="all" <?php if ($category == 'all') echo 'selected'; ?>>Product Categories</option>
+                <option value="coffee" <?php if ($category == 'coffee') echo 'selected'; ?>>Coffee</option>
+                <option value="beverages" <?php if ($category == 'beverages') echo 'selected'; ?>>Beverages</option>
+                <option value="snacks" <?php if ($category == 'snacks') echo 'selected'; ?>>Snacks</option>
+                <option value="noodles" <?php if ($category == 'noodles') echo 'selected'; ?>>Noodles</option>
+                <option value="school-supplies" <?php if ($category == 'school-supplies') echo 'selected'; ?>>School Supplies</option>
+                <option value="toiletries" <?php if ($category == 'toiletries') echo 'selected'; ?>>Toiletries and Laundry</option>
+                <option value="others" <?php if ($category == 'others') echo 'selected'; ?>>Others</option>
             </select>
         </div>
     </nav>
