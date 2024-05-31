@@ -135,7 +135,7 @@
         <div class="category-container">
         <div class="right-panel">
         <div class="customer-info">
-        <!-- <div class="orderID">Order ID</div> -->
+        <div class="orderID">Order ID</div>
         <h3>Customer Information</h3>
         <form id="orderForm" method="POST" action="submit_order.php">
             <input type="text" id="customer-name" name="customer_name" placeholder="Customer name" required>
@@ -174,8 +174,8 @@
                 <input type="number" class="cash-payment" id="cashPaymentInput" name="cash_purchase" placeholder="Input payment">
                 <div class="change">
                     <div class="change-title">Change:</div>
-                    <div class="change-price" id="changeAmount">P0.00</div>
-                    <input type="hidden" name="purchase_change" value="0.00">
+                    <div class="change-price" id="change-amount">P 0.00</div>
+                    <input type="hidden" name="purchase_change">
                 </div>
             </div>
             <div class="gcash-details">
@@ -213,36 +213,36 @@
     </div>
 </div>
     <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const cashButton = document.getElementById("cash-payment");
-                const gcashButton = document.getElementById("gcash-payment");
-                const cashDetails = document.querySelector(".cash-details");
-                const gcashDetails = document.querySelector(".gcash-details");
-                const categoryLinks = document.querySelectorAll('aside ul li a');
-                const products = document.querySelectorAll('.product');
-                const aside = document.querySelector('aside');
-                const buttons = document.querySelectorAll('.payment-option button');
-                const menuToggle = document.getElementById('menu-toggle');
-            
-                // Initialize an empty array to store selected products
-                let selectedProducts = [];
+document.addEventListener('DOMContentLoaded', function() {
+            const cashButton = document.getElementById("cash-payment");
+            const gcashButton = document.getElementById("gcash-payment");
+            const cashDetails = document.querySelector(".cash-details");
+            const gcashDetails = document.querySelector(".gcash-details");
+            const categoryLinks = document.querySelectorAll('aside ul li a');
+            const products = document.querySelectorAll('.product');
+            const aside = document.querySelector('aside');
+            const buttons = document.querySelectorAll('.payment-option button');
+            const menuToggle = document.getElementById('menu-toggle');
+            const totalPriceElement = document.querySelector('.total-price');
 
-                // Add event listeners to product items
-                products.forEach(product => {
-                    product.addEventListener('click', function() {
-                        const productName = product.getAttribute('data-name');
-                        const productPrice = parseFloat(product.getAttribute('data-price'));
-                        // Add selected product to the array
-                        selectedProducts.push({ name: productName, price: productPrice });
-                        // Update order details
-                        updateOrderDetails();
-                    });
+            // Initialize an empty array to store selected products
+            let selectedProducts = [];
+
+            // Add event listeners to product items
+            products.forEach(product => {
+                product.addEventListener('click', function() {
+                    const productName = product.getAttribute('data-name');
+                    const productPrice = parseFloat(product.getAttribute('data-price'));
+                    // Add selected product to the array
+                    selectedProducts.push({ name: productName, price: productPrice });
+                    // Update order details
+                    updateOrderDetails();
                 });
-            
-                // Function to update order details
-                function updateOrderDetails() {
+            });
+
+            // Function to update order details
+            function updateOrderDetails() {
                 const orderContent = document.querySelector('.order-content');
-                const totalPriceElement = document.querySelector('.total-price');
                 const hiddenTotalInput = document.querySelector('input[name="purchase_total"]');
 
                 // Clear existing order content
@@ -313,31 +313,24 @@
                     const quantity = parseInt(orderBox.querySelector('.order-quantity').value);
                     totalPrice += price * quantity;
                 });
-                const totalPriceElement = document.querySelector('.total-price');
                 const hiddenTotalInput = document.querySelector('input[name="purchase_total"]');
                 totalPriceElement.textContent = `₱ ${totalPrice.toFixed(2)}`;
                 hiddenTotalInput.value = totalPrice.toFixed(2);
-                updateChange();
             }
 
-            // Function to compute and update the change
-            function updateChange() {
-                const totalPrice = parseFloat(document.querySelector('.total-price').textContent.replace('₱ ', ''));
-                const amountGiven = parseFloat(document.querySelector('input[name="amount_given"]').value || 0);
-                const change = amountGiven - totalPrice;
-                const changeElement = document.querySelector('.change-amount');
-                changeElement.textContent = `₱ ${change.toFixed(2)}`;
+            // Function to compute change
+            function computeChange() {
+                const totalPrice = parseFloat(totalElement.innerText.replace('₱ ', ''));
+                const cashPayment = parseFloat(cashPaymentInput.value);
+
+                if (!isNaN(cashPayment) && cashPayment >= totalPrice) {
+                    const change = cashPayment - totalPrice;
+                    changeAmountElement.innerText = '₱ ' + change.toFixed(2);
+                } else {
+                    changeAmountElement.innerText = '₱ 0.00';
+                }
             }
 
-            // Add event listeners to update total price and change when quantity or amount given changes
-            document.querySelectorAll('.order-quantity').forEach(input => {
-                input.addEventListener('input', updateTotalPrice);
-            });
-
-            document.querySelector('input[name="amount_given"]').addEventListener('input', updateChange);
-
-            // Initial calculation on page load
-            updateTotalPrice();
 
             // Function to update the time
             function updateTime() {
@@ -389,32 +382,26 @@
                     this.style.backgroundColor = "white"; // Set clicked button color to white
                 });
             });
-    });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const categoryLinks = document.querySelectorAll('aside ul li a');
-        const products = document.querySelectorAll('.product');
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const category = this.getAttribute('data-category');
 
-        categoryLinks.forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                const category = this.getAttribute('data-category');
+                    categoryLinks.forEach(link => link.classList.remove('active'));
+                    this.classList.add('active');
 
-                categoryLinks.forEach(link => link.classList.remove('active'));
-                this.classList.add('active');
-
-                products.forEach(product => {
-                    const productCategory = product.getAttribute('data-category');
-                    if (category === 'All' || productCategory === category) {
-                        product.style.display = 'block';
-                    } else {
-                        product.style.display = 'none';
-                    }
+                    products.forEach(product => {
+                        const productCategory = product.getAttribute('data-category');
+                        if (category === 'All' || productCategory === category) {
+                            product.style.display = 'block';
+                        } else {
+                            product.style.display = 'none';
+                        }
+                    });
                 });
             });
         });
-    });
-
     </script>
 </body>
 </html>
