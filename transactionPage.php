@@ -2,6 +2,9 @@
 
 include 'DBconnector.php';
 
+$query = "SELECT * FROM transaction";
+$result = $conn->query($query);
+
 ?>
 
 <!DOCTYPE html>
@@ -52,24 +55,37 @@ include 'DBconnector.php';
                     <th>Quantity</th>
                     <th>Total</th>
                     <th>Payment Method</th>
-                    <th>Payment/Reference No.</th>
+                    <th>Cash Payment</th>
+                    <th>Gcash Ref. No.</th>
                     <th>Change</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>#000143</td>
-                    <td>Daniella Pailden</td>
-                    <td>05/23/24 1:52PM</td>
-                    <td>#000001</td>
-                    <td>1</td>
-                    <td>00.00</td>
-                    <td>Cash</td>
-                    <td>00.00</td>
-                    <td>00.00</td>
-                    <td></td>
-                </tr>
+            <?php
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($row['order_id']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['customer_name']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['order_dateTime']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['item_id']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['order_quantity']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['purchase_total']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['payment_method']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['cash_purchase']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['gcash_purchase']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['purchase_change']) . "</td>";
+                        echo "<td>";
+                        echo "<a href='edit_transaction.php?id=" . htmlspecialchars($row['order_id']) . "' class='edit-button'>Edit</a> ";
+                        echo "<a href='delete_transaction.php?id=" . htmlspecialchars($row['order_id']) . "' class='delete-button' onclick='return confirm(\"Are you sure you want to delete this product?\");'>Delete</a>";
+                        echo "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='11'>No transaction record</td></tr>";
+                }
+            ?>
             </tbody>
         </table>
     </div>
