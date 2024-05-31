@@ -2,16 +2,6 @@
 
 include 'DBconnector.php';
 
-function create_unique_id() {
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < 20; $i++) {
-        $randomString .= $characters[mt_rand(0, $charactersLength - 1)];
-    }
-    return $randomString;
-}
-
 if(isset($_POST['post'])){
     $productName = $_POST['productName'];
     $productName = filter_var($productName, FILTER_SANITIZE_STRING);
@@ -27,7 +17,7 @@ if(isset($_POST['post'])){
     $image_01 = $_FILES['image_01']['name'];
     $image_01 = filter_var($image_01, FILTER_SANITIZE_STRING);
     $image_01_ext = pathinfo($image_01, PATHINFO_EXTENSION);
-    $rename_image_01 = create_unique_id().'.'.$image_01_ext;
+    $rename_image_01 = $_POST['productName'].'.'.$image_01_ext;
     $image_01_tmp_name = $_FILES['image_01']['tmp_name'];
     $image_01_size = $_FILES['image_01']['size'];
     $image_01_folder = 'uploaded_files/'.$rename_image_01;
