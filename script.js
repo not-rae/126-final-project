@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     const cashButton = document.getElementById("cash-payment");
     const gcashButton = document.getElementById("gcash-payment");
@@ -82,6 +83,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const decrementButtons = document.querySelectorAll('.btn-decrement');
     const incrementButtons = document.querySelectorAll('.btn-increment');
@@ -89,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const totalElement = document.querySelector('.total-price');
     const cashPaymentInput = document.getElementById('cashPaymentInput');
     const changeAmountElement = document.getElementById('changeAmount');
-    const payNowButton = document.getElementById('payNowButton');
+    const payNowButtonCASH = document.getElementById('payNowButtonCASH');
     const productList = document.querySelector('.product-list');
     const orderContent = document.querySelector('.order-content');
 
@@ -213,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
     cashPaymentInput.addEventListener('input', computeChange);
 
     // Add event listener to pay now button
-    payNowButton.addEventListener('click', computeChange);
+    payNowButtonCASH.addEventListener('click', computeChange);
 
     // Add event listener to product list
     productList.querySelectorAll('.product').forEach(product => {
@@ -227,4 +230,59 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Compute total price initially
     computeTotalPrice();
+});
+
+document.getElementById('showQRCodeButton').onclick = function() {
+    document.getElementById('qrCodePanel').style.display = "block";
+};
+
+document.getElementsByClassName('close')[0].onclick = function() {
+    document.getElementById('qrCodePanel').style.display = "none";
+};
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById('qrCodePanel')) {
+        document.getElementById('qrCodePanel').style.display = "none";
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const payNowButtonCASH = document.getElementById('payNowButtonCASH');
+    const payNowButtonGCASH = document.getElementById('payNowButtonGCASH');
+    const quantitySpan = document.getElementById('productQuantity');
+    const orderQuantityInput = document.getElementById('orderQuantity');
+    
+    payNowButtonCASH.addEventListener('click', () => {
+        let currentQuantity = parseInt(quantitySpan.textContent);
+        let orderQuantity = parseInt(orderQuantityInput.value);
+
+        if (isNaN(orderQuantity) || orderQuantity <= 0) {
+            alert('Please enter a valid order quantity.');
+            return;
+        }
+        
+        if (orderQuantity > currentQuantity) {
+            alert('Sorry, the requested quantity is not available.');
+        } else {
+            currentQuantity -= orderQuantity;
+            quantitySpan.textContent = currentQuantity;
+        }
+    });
+
+    payNowButtonGCASH.addEventListener('click', () => {
+        let currentQuantity = parseInt(quantitySpan.textContent);
+        let orderQuantity = parseInt(orderQuantityInput.value);
+
+        if (isNaN(orderQuantity) || orderQuantity <= 0) {
+            alert('Please enter a valid order quantity.');
+            return;
+        }
+        
+        if (orderQuantity > currentQuantity) {
+            alert('Sorry, the requested quantity is not available.');
+        } else {
+            currentQuantity -= orderQuantity;
+            quantitySpan.textContent = currentQuantity;
+        }
+    });
 });

@@ -8,24 +8,16 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <style>
-    main {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-        width: 68.3rem;
-    }
-    .dashboard {
-        border-bottom: none;
-    }
-    
 </style>
 <body>
     <header>
         <div class="back-button">
-            <a href="home.html"><span class='bx bx-left-arrow-circle'></span></a>
+            <a href="home.html">
+                <span class='bx bx-left-arrow-circle'></span>
+            </a>
         </div>    
         <div class="separator"></div>
-        <div class="Logo">
+            <div class="Logo">
             <img src="logo2.png" alt="Logo">
         </div>
         <div class="titles">
@@ -65,8 +57,10 @@
 
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
-                        echo '<div class="product" data-category="' . htmlspecialchars($row["category"]) . '">';
-                        echo '<img src="' . htmlspecialchars($row["image_path"]) . '" alt="' . htmlspecialchars($row["item_name"]) . '" class="product-img">';
+                        echo '<div class="product" data-category="' . htmlspecialchars($row["category"]) . '" data-name="' . htmlspecialchars($row["item_name"]) . '" data-price="' . htmlspecialchars($row["price"]) . '">';
+                        // Constructing the image URL by combining the base URL of your images folder with the image file name
+                        $imageURL = 'uploaded_files/' . htmlspecialchars($row["image_path"]);
+                        echo '<img src="' . $imageURL . '" alt="' . htmlspecialchars($row["item_name"]) . '" class="product-img">';
                         echo '<h3 class="product-title">' . htmlspecialchars($row["item_name"]) . '</h3>';
                         echo '<span class="price">₱ ' . htmlspecialchars(number_format($row["price"], 2)) . '</span>';
                         echo '<p class="quantity">Quantity: ' . htmlspecialchars($row["quantity"]) . '</p>';
@@ -78,71 +72,121 @@
 
                 $conn->close();
                 ?>
+                <!-- <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/sisters.jpg" alt="" class="product-img">
+                    <h3 class="product-title">sisters</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/sisters.jpg" alt="" class="product-img">
+                    <h3 class="product-title">sisters</h3>
+                    <span class="price">₱ 00.00</span>
+                    <p class="quantity">Quantity: <span id="productQuantity">10</span></p>
+                </div>
+                <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/sisters.jpg" alt="" class="product-img">
+                    <h3 class="product-title">sisters</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/sisters.jpg" alt="" class="product-img">
+                    <h3 class="product-title">sisters</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/sisters.jpg" alt="" class="product-img">
+                    <h3 class="product-title">sisters</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/sisters.jpg" alt="" class="product-img">
+                    <h3 class="product-title">sisters</h3>
+                    <span class="price">₱ 01.00</span>
+                </div>
+                <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/sisters.jpg" alt="" class="product-img">
+                    <h3 class="product-title">sisters</h3>
+                    <span class="price">₱ 08.00</span>
+                </div>
+                <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/sisters.jpg" alt="" class="product-img">
+                    <h3 class="product-title">sisters</h3>
+                    <span class="price">₱ 19.00</span>
+                </div>
+                <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/sisters.jpg" alt="" class="product-img">
+                    <h3 class="product-title">sisters</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/sisters.jpg" alt="" class="product-img">
+                    <h3 class="product-title">sisters</h3>
+                    <span class="price">₱ 00.00</span>
+                </div>
+                <div class="product" data-category="Toiletries">
+                    <img src="./toiletries&laundry/sisters.jpg" alt="" class="product-img">
+                    <h3 class="product-title">sisters</h3>
+                    <span class="price">₱ 00.00</span>
+                </div> -->
+
             </div>
         </main>
         <div class="category-container">
-        <div class="right-panel">
-            <div class="customer-info">
-                <div class="orderID">Order ID</div>
-                <h3>Customer Information</h3>   
-                <input type="text" id="customer-name" name="customer-name" placeholder="Customer name">
-            </div>
-            <div class="order-details">
-                <hr>
-                <h3>Order details</h3>
-                <div class="order-content">
-                    <div class="order-box">
-                        <img src="./beverages/dutchmill.jpg" alt="" class="order-img">
-                        <div class="detail-box">
-                            <div class="order-product-title"> Dutch Mill</div>
-                            <div class="order-price">₱ 10.00</div>
-                        <div class="quantity-container">
-                            <button type="button" class="btn-decrement">-</button>
-                            <input type="text" value="1" class="order-quantity">
-                            <button type="button" class="btn-increment">+</button>
+            <div class="right-panel">
+                <div class="customer-info">
+                    <div class="orderID" id="orderID"></div>
+                        <h3>Customer Information</h3>
+                            <form id="orderForm" method="POST" action="submit_order.php">
+                                <input type="text" id="customer-name" name="customer-name" placeholder="Customer name">
+                                    <div class="order-details">
+                                        <hr>
+                                        <h3>Order details</h3>
+                                        <div class="order-content">
+                                        </div>
+                                    
+                                        <!-- Total -->
+                                        <div class="total">
+                                            <div class="total-title">Total:</div>
+                                            <div class="total-price">₱ 0.00</div>
+                                        </div>
+                                    </div>
+                                
+                                    <!-- Payment Option -->
+                                    <h3>Payment Option</h3>
+                                    <div class="payment-option-container">
+                                        <div class="payment-option">
+                                            <button id="cash-payment">Cash</button>
+                                            <button id="gcash-payment">GCash</button>
+                                        </div>
+                                    </div>
+                                    <div class="cash-details">
+                                        <input type="number" class="cash-payment" id="cashPaymentInput" placeholder="Input payment">
+                                        <div class="change">
+                                            <div class="change-title">Change:</div>
+                                            <div class="change-price" id="changeAmount">P0.00</div>
+                                        </div>
+                                        <button type="button" class="btn-buy" id="payNowButtonCASH">Pay Now</button>
+                                    </div>
+                                
+                                    <div class="gcash-details">
+                                        <button id="showQRCodeButton">Show QR Code</button>
+                                        <input type="text" class="referenceNo" placeholder="Reference No.">
+                                        <button type="button" class="btn-buy" id="payNowButtonGCASH">Pay Now</button>
+                                    </div>
+                                    <div id="qrCodePanel" class="qr-code-panel">
+                                        <div class="popup-content">
+                                            <h2>QR Code</h2>
+                                            <hr style="max-width: 100%; border: 2px solid #000;">
+                                            <img src="qr-code.png" alt="QR Code">
+                                            <button class="close">Done</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                            
-                        </div> 
-                        <i class='bx bxs-trash order-remove'></i>
                     </div>
                 </div>
-
-                <!-- Total -->
-                <div class="total">
-                    <div class="total-title">Total:</div>
-                    <div class="total-price">₱ 0.00</div>
-                </div>
             </div>
-
-            <!-- Payment Option -->
-            <h3>Payment Option</h3>
-            <div class="payment-option-container">
-                <div class="payment-option">
-                    <button id="cash-payment">Cash</button>
-                    <button id="gcash-payment">GCash</button>
-                </div>
-            </div>
-            <div class="cash-details">
-                <input type="number" class="cash-payment" id="cashPaymentInput" placeholder="Input payment">
-                <div class="change">
-                    <div class="change-title">Change:</div>
-                    <div class="change-price" id="changeAmount">P0.00</div>
-                </div>
-                <button type="button" class="btn-buy" id="payNowButton">Pay Now</button>
-            </div>
-
-            <div class="gcash-details">
-                <button id="showQRCodeButton">Show QR Code</button>
-                <input type="text" class="referenceNo" placeholder="Reference No.">
-                <button type="button" class="btn-buy">Pay Now</button>
-            </div>
-            <div id="qrCodePopup" class="popup">
-                <div class="popup-content">
-                    <span class="close">&times;</span>
-                    <img src="./icons/others.png" alt="QR Code">
-                </div>
-            </div>
-        </div>
         </div>
     <script src="script.js"></script>
 </body>
