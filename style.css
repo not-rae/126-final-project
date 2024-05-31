@@ -256,7 +256,7 @@ button:hover {
     margin-bottom: 15px;
 }
 
-#customer-name{
+#customer_name{
     border: 1px solid gray; 
     background-color: transparent;
     padding: 10px 20px; 

@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function () {
     const decrementButtons = document.querySelectorAll('.btn-decrement');
     const incrementButtons = document.querySelectorAll('.btn-increment');
-    const orderQuantityInputs = document.querySelectorAll('.order-quantity');
+    const orderQuantityInputs = document.querySelectorAll('.order_quantity');
     const totalElement = document.querySelector('.total-price');
     const cashPaymentInput = document.getElementById('cashPaymentInput');
     const changeAmountElement = document.getElementById('changeAmount');
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const orderItems = document.querySelectorAll('.order-box');
 
         orderItems.forEach(item => {
-            const quantity = parseInt(item.querySelector('.order-quantity').value);
+            const quantity = parseInt(item.querySelector('.order_quantity').value);
             const price = parseFloat(item.querySelector('.order-price').innerText.replace('₱ ', ''));
             totalPrice += quantity * price;
         });
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="order-price">₱ ${price}</div>
                 <div class="quantity-container">
                     <button type="button" class="btn-decrement">-</button>
-                    <input type="text" value="1" class="order-quantity">
+                    <input type="text" value="1" class="order_quantity">
                     <button type="button" class="btn-increment">+</button>
                 </div>
             </div>
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Add event listeners to the new quantity buttons
         orderBox.querySelector('.btn-decrement').addEventListener('click', handleDecrementClick);
         orderBox.querySelector('.btn-increment').addEventListener('click', handleIncrementClick);
-        orderBox.querySelector('.order-quantity').addEventListener('input', handleInputChange);
+        orderBox.querySelector('.order_quantity').addEventListener('input', handleInputChange);
         orderBox.querySelector('.order-remove').addEventListener('click', handleRemoveClick);
     }
 

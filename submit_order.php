@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $payment_method = mysqli_real_escape_string($conn, $_POST['payment_method']);
     $cash_purchase = isset($_POST['cash_purchase']) ? (float)$_POST['cash_purchase'] : 0;
     $gcash_purchase = isset($_POST['gcash_purchase']) ? mysqli_real_escape_string($conn, $_POST['gcash_purchase']) : '';
-    $purchase_change = 0;
+    $purchase_change = (float)$_POST['purchase_change'];
 
 
     $sql = "INSERT INTO transaction (customer_name, item_id, order_quantity, purchase_total, payment_method, cash_purchase, gcash_purchase, purchase_change)
