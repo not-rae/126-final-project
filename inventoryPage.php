@@ -60,11 +60,10 @@ $result = $conn->query($query);
                     <th>Unit Price</th>
                     <th>Quantity</th>
                     <th>Restock Date</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <?php
+            <?php
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
@@ -74,13 +73,12 @@ $result = $conn->query($query);
                         echo "<td>" . htmlspecialchars($row['price']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['quantity']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['restockDate']) . "</td>";
-                        echo "<td>" . "</td>";
                         echo "</tr>";
                     }
                 } else {
                     echo "<tr><td colspan='7'>No products found</td></tr>";
                 }
-                ?>
+            ?>
             </tbody>
         </table>
     </div>
