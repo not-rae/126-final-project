@@ -77,7 +77,6 @@
         <div class="category-container">
             <div class="right-panel">
                 <div class="customer-info">
-                    <div class="orderID" id="orderID"></div>
                         <h3>Customer Information</h3>
                             <form method="POST" action="submit_order.php">
                                 <input type="text" id="customer_name" name="customer_name" placeholder="Customer name" required>
