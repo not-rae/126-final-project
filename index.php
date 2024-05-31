@@ -128,7 +128,6 @@
             } else {
                 echo "0 results";
             }
-
             $conn->close();
             ?>
             </div>
@@ -214,31 +213,31 @@
     </div>
 </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        const cashButton = document.getElementById("cash-payment");
-        const gcashButton = document.getElementById("gcash-payment");
-        const cashDetails = document.querySelector(".cash-details");
-        const gcashDetails = document.querySelector(".gcash-details");
-        const categoryLinks = document.querySelectorAll('aside ul li a');
-        const products = document.querySelectorAll('.product');
-        const aside = document.querySelector('aside');
-        const buttons = document.querySelectorAll('.payment-option button');
-        const menuToggle = document.getElementById('menu-toggle');
-    
-        // Initialize an empty array to store selected products
-        let selectedProducts = [];
+            document.addEventListener('DOMContentLoaded', function() {
+                const cashButton = document.getElementById("cash-payment");
+                const gcashButton = document.getElementById("gcash-payment");
+                const cashDetails = document.querySelector(".cash-details");
+                const gcashDetails = document.querySelector(".gcash-details");
+                const categoryLinks = document.querySelectorAll('aside ul li a');
+                const products = document.querySelectorAll('.product');
+                const aside = document.querySelector('aside');
+                const buttons = document.querySelectorAll('.payment-option button');
+                const menuToggle = document.getElementById('menu-toggle');
+            
+                // Initialize an empty array to store selected products
+                let selectedProducts = [];
 
-        // Add event listeners to product items
-        products.forEach(product => {
-            product.addEventListener('click', function() {
-                const productName = product.getAttribute('data-name');
-                const productPrice = parseFloat(product.getAttribute('data-price'));
-                // Add selected product to the array
-                selectedProducts.push({ name: productName, price: productPrice });
-                // Update order details
-                updateOrderDetails();
-            });
-        });
+                // Add event listeners to product items
+                products.forEach(product => {
+                    product.addEventListener('click', function() {
+                        const productName = product.getAttribute('data-name');
+                        const productPrice = parseFloat(product.getAttribute('data-price'));
+                        // Add selected product to the array
+                        selectedProducts.push({ name: productName, price: productPrice });
+                        // Update order details
+                        updateOrderDetails();
+                    });
+                });
             
                 // Function to update order details
                 function updateOrderDetails() {
@@ -318,84 +317,103 @@
                 const hiddenTotalInput = document.querySelector('input[name="purchase_total"]');
                 totalPriceElement.textContent = `₱ ${totalPrice.toFixed(2)}`;
                 hiddenTotalInput.value = totalPrice.toFixed(2);
+                updateChange();
             }
 
+            // Function to compute and update the change
+            function updateChange() {
+                const totalPrice = parseFloat(document.querySelector('.total-price').textContent.replace('₱ ', ''));
+                const amountGiven = parseFloat(document.querySelector('input[name="amount_given"]').value || 0);
+                const change = amountGiven - totalPrice;
+                const changeElement = document.querySelector('.change-amount');
+                changeElement.textContent = `₱ ${change.toFixed(2)}`;
+            }
 
-        // Function to update the time
-        function updateTime() {
-            const dateTimeElement = document.getElementById('currentDateTime');
-            const currentDate = new Date();
-            const options = { hour: 'numeric', minute: 'numeric', second: 'numeric', month: '2-digit', day: '2-digit', year: 'numeric' };
-            const formattedDate = currentDate.toLocaleDateString('en-US', options);
-            dateTimeElement.textContent = formattedDate;
-        }
-
-        // Initially hide both payment option details
-        cashDetails.style.display = "none";
-        gcashDetails.style.display = "none";
-
-        // Function to reset button colors
-        function resetButtonColors() {
-            buttons.forEach(btn => btn.style.backgroundColor = "#DDB892");
-        }
-
-        // Add click event listeners to the cash and GCash buttons
-        cashButton.addEventListener("click", function() {
-            cashDetails.style.display = "block";
-            gcashDetails.style.display = "none";
-            resetButtonColors();
-            cashButton.style.backgroundColor = "white"; // Set cash button color to white
-        });
-
-        gcashButton.addEventListener("click", function() {
-            cashDetails.style.display = "none";
-            gcashDetails.style.display = "block";
-            resetButtonColors();
-            gcashButton.style.backgroundColor = "white"; // Set GCash button color to white
-        });
-
-        // call the updateTime function
-        updateTime();
-
-        // update the time every second
-        setInterval(updateTime, 1000);
-
-        menuToggle.addEventListener('click', () => {
-            aside.classList.toggle('active');
-        });
-
-        // payment buttons
-        buttons.forEach(button => {
-            button.addEventListener('click', function() {
-                resetButtonColors(); // Reset all button colors
-                this.style.backgroundColor = "white"; // Set clicked button color to white
+            // Add event listeners to update total price and change when quantity or amount given changes
+            document.querySelectorAll('.order-quantity').forEach(input => {
+                input.addEventListener('input', updateTotalPrice);
             });
-        });
+
+            document.querySelector('input[name="amount_given"]').addEventListener('input', updateChange);
+
+            // Initial calculation on page load
+            updateTotalPrice();
+
+            // Function to update the time
+            function updateTime() {
+                const dateTimeElement = document.getElementById('currentDateTime');
+                const currentDate = new Date();
+                const options = { hour: 'numeric', minute: 'numeric', second: 'numeric', month: '2-digit', day: '2-digit', year: 'numeric' };
+                const formattedDate = currentDate.toLocaleDateString('en-US', options);
+                dateTimeElement.textContent = formattedDate;
+            }
+
+            // Initially hide both payment option details
+            cashDetails.style.display = "none";
+            gcashDetails.style.display = "none";
+
+            // Function to reset button colors
+            function resetButtonColors() {
+                buttons.forEach(btn => btn.style.backgroundColor = "#DDB892");
+            }
+
+            // Add click event listeners to the cash and GCash buttons
+            cashButton.addEventListener("click", function() {
+                cashDetails.style.display = "block";
+                gcashDetails.style.display = "none";
+                resetButtonColors();
+                cashButton.style.backgroundColor = "white"; // Set cash button color to white
+            });
+
+            gcashButton.addEventListener("click", function() {
+                cashDetails.style.display = "none";
+                gcashDetails.style.display = "block";
+                resetButtonColors();
+                gcashButton.style.backgroundColor = "white"; // Set GCash button color to white
+            });
+
+            // call the updateTime function
+            updateTime();
+
+            // update the time every second
+            setInterval(updateTime, 1000);
+
+            menuToggle.addEventListener('click', () => {
+                aside.classList.toggle('active');
+            });
+
+            // payment buttons
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    resetButtonColors(); // Reset all button colors
+                    this.style.backgroundColor = "white"; // Set clicked button color to white
+                });
+            });
     });
 
     document.addEventListener('DOMContentLoaded', function() {
-    const categoryLinks = document.querySelectorAll('aside ul li a');
-    const products = document.querySelectorAll('.product');
+        const categoryLinks = document.querySelectorAll('aside ul li a');
+        const products = document.querySelectorAll('.product');
 
-    categoryLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            const category = this.getAttribute('data-category');
+        categoryLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const category = this.getAttribute('data-category');
 
-            categoryLinks.forEach(link => link.classList.remove('active'));
-            this.classList.add('active');
+                categoryLinks.forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
 
-            products.forEach(product => {
-                const productCategory = product.getAttribute('data-category');
-                if (category === 'All' || productCategory === category) {
-                    product.style.display = 'block';
-                } else {
-                    product.style.display = 'none';
-                }
+                products.forEach(product => {
+                    const productCategory = product.getAttribute('data-category');
+                    if (category === 'All' || productCategory === category) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
             });
         });
     });
-});
 
     </script>
 </body>
