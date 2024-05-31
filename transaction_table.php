@@ -10,7 +10,7 @@ $sql = "CREATE TABLE IF NOT EXISTS transaction (
     purchase_total DECIMAL(10, 2) NOT NULL,
     payment_method VARCHAR(15) NOT NULL,
     cash_purchase DECIMAL(10, 2) NOT NULL,
-    gcash_purcahse INT(15) NOT NULL,
+    gcash_purchase INT(15) NOT NULL,
     purchase_change DECIMAL(10, 2) NOT NULL
 )";
 
